@@ -1,0 +1,23 @@
+{%  load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" href="{% static 'article_page.css' %}">
+</head>
+<body>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.articlePageContent }}</p>
+    {% if article.articlePageImage %}
+        <img src="{{ article.articlePageImage.url }}" alt="Image 1">
+    {% endif %}
+    <p>{{ article.articlePageContent2 }}</p>
+    {% if article.articlePageImage2 %}
+        <img src="{{ article.articlePageImage2.url }}" alt="Image 2">
+    {% endif %}
+    <p>{{ article.articlePageContent3 }}</p>
+    {% if article.articlePageImage3 %}
+        <img src="{{ article.articlePageImage3.url }}" alt="Image 3">
+    {% endif %}
+</body>
+</html>

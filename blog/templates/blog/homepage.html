@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Blog</title>
+</head>
+<body>
+    <h1>Articles</h1>
+    <ul>
+        {% for article in articles %}
+            <li><a href="{% url 'article_page' article.id %}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% comment %} <script>
+        var currentPage = 1;
+        var loading = false;
+        var finished = false;
+
+        function loadMore() {
+            if (!loading && !finished) {
+                loading = true;
+                var url = `/load_more_articles/?page=${currentPage}`;
+
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data.trim() === "") {
+                            finished = true;
+                        } else {
+                            var container = document.createElement('div');
+                            container.innerHTML = data;
+                            document.querySelector('body').appendChild(container);
+                            currentPage += 1;
+                        }
+                        loading = false;
+                    });
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                loadMore();
+            }
+        });
+
+        loadMore();
+    </script> {% endcomment %}
+</body>
+</html>
